@@ -24,7 +24,7 @@ def read_data_store(slave_id, function_code, address):
 def write_data_store(slave_id, function_code, address, value):
     """ " Set value for address."""
     print(
-        f"\t-- Wrote value {value} to address {address} for slave_id {slave_id} with function code: {function_code} and address {address}"
+        f"\t-- Wrote value {value} to address {address} for slave_id {slave_id} with function code {function_code}"
     )
     data_store[address] = value
 
