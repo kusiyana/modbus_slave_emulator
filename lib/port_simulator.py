@@ -1,15 +1,14 @@
 import os
 import subprocess
 import time
-
+import platform
 import psutil
 
 
 class PortSimulator:
     def __init__(self):
-        self.port_master = f"{os.environ['HOME']}/tty00mast"
-        self.port_slave = f"{os.environ['HOME']}/tty00slav"
-
+        self.set_os_port()
+        
     def start_port_simulation(self) -> None:
         command_raw = f"socat -d -d PTY,link={self.port_slave},raw PTY,link={self.port_master},raw >/dev/null 2>&1 &"
         process = subprocess.Popen(
@@ -32,3 +31,11 @@ class PortSimulator:
             parent.kill()
         except:
             pass
+
+    def set_os_port(self):
+        if platform.system() == "Linux":
+            self.port_master = f"tmp/tty00mast"
+            self.port_slave = f"tmp/tty00slav"
+        else:
+            self.port_master = f"{os.environ['HOME']}/tty00mast"
+            self.port_slave = f"{os.environ['HOME']}/tty00slav"
