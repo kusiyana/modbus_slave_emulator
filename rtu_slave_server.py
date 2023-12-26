@@ -8,6 +8,10 @@ port_simulator = PortSimulator()
 port_simulator.start_port_simulation()
 slave = SlaveSimulator.initialise_slave(port_simulator.port_slave)
 
+data_store[0] = 0
+data_store[1] = 0
+data_store[2] = 0
+data_store[0x01A] = 0
 
 @slave.route(
     slave_ids=list(range(0, 5)), function_codes=[3], addresses=list(range(0, 50))
