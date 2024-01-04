@@ -2,7 +2,9 @@
 
 Install socat first:
 
-brew install socat
+Mac: brew install socat
+
+Ubuntu:  sudo apt-get install -y socat
 
 Then, when that's done:
 
